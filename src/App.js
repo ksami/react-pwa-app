@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import 'spectre.css';
+import 'spectre.css/dist/spectre-icons.css';
 
-import { Navbar } from './components';
+import { SidebarHider } from './components';
 
 class App extends Component {
   render() {
     return (
       <div className="container">
-        <Navbar />
+        <SidebarHider />
       </div>
     );
   }
