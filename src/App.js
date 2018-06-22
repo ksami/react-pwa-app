@@ -3,8 +3,9 @@ import 'grommet/grommet.min.css';
 
 import { App, Header, Title } from 'grommet';
 import { updatePosts } from './actions';
-import { PostList } from './components';
+import { PreviewList, Post } from './components';
 import { connect } from 'react-redux';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 
 class HelloWorldApp extends Component {
@@ -20,12 +21,16 @@ class HelloWorldApp extends Component {
 
   render() {
     return (
-      <App centered={true}>
-        <Header fixed={true} direction="row" align="center" justify="between" size="small" pad={{ horizontal: 'medium' }}>
-          <Title>Articles</Title>
-        </Header>
-        <PostList />
-      </App>
+      <Router>
+        <App centered={true}>
+          <Header fixed={true} direction="row" align="center" justify="between" size="small" pad={{ horizontal: 'medium' }}>
+            <Title>Articles</Title>
+            <Link to='/posts'>Posts -></Link>
+          </Header>
+          <Route exact path='/posts' component={PreviewList} />
+          <Route path='/posts/:postId' component={Post} />
+        </App>
+      </Router>
     );
   }
 }
